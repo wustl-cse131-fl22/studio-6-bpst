@@ -13,25 +13,37 @@ public class IterativeMethods {
 	 *         ...)
 	 */
 	public static double geometricSum(int n) {
-		double sum = 0.0;
-		for (int power = 1; power <= n; ++power) {
-			sum = sum + Math.pow(0.5, power);
+		//if (n < 1) {
+			//return 0;
+		//}
+		if (n>0) {
+			return (1.0/(Math.pow(2, n))) + (geometricSum(n-1));
 		}
-		return sum;
+		return 0;
 	}
+	
 
 	/**
 	 * @param p first operand
 	 * @param q second operand
 	 * @return greatest common divisor of p and q
 	 */
-	public static int gcd(int p, int q) {
+	public static int gcd2(int p, int q) {
 		while (q != 0) {
 			int temp = q;
 			q = p % q;
 			p = temp;
 		}
 		return p;
+	}
+	
+	public static int gcd(int p, int q) {
+		if (q == 0) {
+			return p;
+		}
+		else {
+			return gcd(q, p%q);
+		}
 	}
 
 	/**
